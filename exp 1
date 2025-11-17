@@ -1,0 +1,47 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+
+df = pd.read_csv('C:/Users/HDC0422048/Downloads/iris.csv')
+
+df_Setosa = df[df['species'] == 'setosa']
+df_Virginica = df[df['species'] == 'virginica']
+df_Versicolor = df[df['species'] == 'versicolor']
+
+plt.scatter(df_Setosa['sepal_width'], np.zeros_like(df_Setosa['sepal_width']), label='Setosa')
+plt.scatter(df_Virginica['sepal_width'], np.zeros_like(df_Virginica['sepal_width']), label='Virginica')
+plt.scatter(df_Versicolor['sepal_width'], np.zeros_like(df_Versicolor['sepal_width']), label='Versicolor')
+plt.xlabel('sepal_width')
+plt.legend()
+plt.show()
+
+plt.scatter(df_Setosa['petal_width'], np.zeros_like(df_Setosa['petal_width']), label='Setosa')
+plt.scatter(df_Virginica['petal_width'], np.zeros_like(df_Virginica['petal_width']), label='Virginica')
+plt.scatter(df_Versicolor['petal_width'], np.zeros_like(df_Versicolor['petal_width']), label='Versicolor')
+plt.xlabel('petal_width')
+plt.legend()
+plt.show()
+
+plt.scatter(df_Setosa['sepal_length'], np.zeros_like(df_Setosa['sepal_length']), label='Setosa')
+plt.scatter(df_Virginica['sepal_length'], np.zeros_like(df_Virginica['sepal_length']), label='Virginica')
+plt.scatter(df_Versicolor['sepal_length'], np.zeros_like(df_Versicolor['sepal_length']), label='Versicolor')
+plt.xlabel('sepal_length')
+plt.legend()
+plt.show()
+
+plt.scatter(df_Setosa['petal_length'], np.zeros_like(df_Setosa['petal_length']), label='Setosa')
+plt.scatter(df_Virginica['petal_length'], np.zeros_like(df_Virginica['petal_length']), label='Virginica')
+plt.scatter(df_Versicolor['petal_length'], np.zeros_like(df_Versicolor['petal_length']), label='Versicolor')
+plt.xlabel('petal_length')
+plt.legend()
+plt.show()
+
+sns.FacetGrid(df, hue='species', height=5).map(plt.scatter, "sepal_width", "petal_width").add_legend()
+plt.show()
+
+sns.FacetGrid(df, hue='species', height=5).map(plt.scatter, "sepal_length", "petal_length").add_legend()
+plt.show()
+
+scatter plots
+sns.pairplot(df, hue="species", height=2)
